@@ -8,13 +8,12 @@ import FilmFolio from './components/FilmFolio';
 const DesktopWrapper = styled.div`
   display: flex;
   justify-content: center;
+  background-color: black;
   height: 100vh;
 `;
 
 const Desktop = styled.div`
   width: calc(100vh * 4 / 3);
-  display: flex;
-  flex-direction: column;
   background: ${({ theme }) => theme.desktopBackground};
 `;
 
@@ -24,7 +23,7 @@ const App = () => {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <DesktopWrapper>
-          <Desktop>
+          <Desktop className='f fc'>
             <Application name='filmfolio.exe'>
               <FilmFolio />
             </Application>

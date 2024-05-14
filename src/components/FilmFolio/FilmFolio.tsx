@@ -6,7 +6,7 @@ import Films from './Films';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  height: 100%;
   padding: 0.5em;
   gap: 1em;
 `;
@@ -37,7 +37,7 @@ const FilmFolio: FC = () => {
     <Wrapper>
       <Header>
         <span>Welcome to FilmFolio!</span>
-        <div className='f' style={{ gap: '5px' }}>
+        <div style={{ display: 'flex', gap: '5px' }}>
           <Button>Login</Button>
           <Button>Sign up</Button>
         </div>
@@ -51,9 +51,9 @@ const FilmFolio: FC = () => {
             Users
           </Tab>
         </Tabs>
-        <TabBody>
+        <TabBody className='f fc fg'>
           {activeTab === 0 && <Films />}
-          {activeTab === 1 && <></>}
+          {activeTab === 1 && <h1>Here show users</h1>}
         </TabBody>
       </div>
     </Wrapper>

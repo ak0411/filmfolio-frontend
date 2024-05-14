@@ -6,16 +6,17 @@ import styled from 'styled-components';
 const FilmsGrid = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
-  justify-items: center;
-  grid-gap: 5px;
   overflow-y: auto;
+  height: 60vh;
+  justify-items: center;
+  grid-row-gap: 10px;
 `;
 
 const styleFilmCard: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
-  width: '300px',
-  height: '550px',
+  width: '350px',
+  height: 'auto',
 };
 
 const styleGenreWrapper: CSSProperties = {
@@ -35,9 +36,9 @@ const styleSearchBar: CSSProperties = {
 
 const Films: FC = () => {
   return (
-    <div className='f fc' style={{ gap: 20, border: 'dotted 2px red' }}>
+    <div className='f fc' style={{ gap: 20 }}>
       <TextInput style={styleSearchBar} placeholder='Search' />
-      <ScrollView style={{ border: 'solid 2px blue' }}>
+      <ScrollView>
         <FilmsGrid>
           {filmData.map((film) => (
             <Frame style={styleFilmCard} key={film.imdb} variant='well'>

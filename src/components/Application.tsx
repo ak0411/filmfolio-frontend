@@ -25,7 +25,7 @@ interface Props {
 const Application: FC<Props> = ({ name, children }) => {
   return (
     <Window className='f fc fg'>
-      <WindowHeader className='f fac fjb'>
+      <WindowHeader className='f fjb'>
         <span>{name}</span>
         <div className='f fac'>
           <Button>
@@ -45,7 +45,7 @@ const Application: FC<Props> = ({ name, children }) => {
           </Button>
         </div>
       </WindowHeader>
-      <WindowContent className='f fullh np'>{children}</WindowContent>
+      <WindowContent className='fg'>{children}</WindowContent>
     </Window>
   );
 };
