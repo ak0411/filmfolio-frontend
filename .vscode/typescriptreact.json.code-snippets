@@ -1,0 +1,16 @@
+{
+  "boilerplate": {
+    "prefix": "boilerplate",
+    "body": [
+      "import { FC } from \"react\";",
+      "",
+      "interface Props {}",
+      "",
+      "const $TM_FILENAME_BASE: FC<props> = () => {",
+      "return <div>$TM_FILENAME_BASE</div>;",
+      "};",
+      "",
+      "export default $TM_FILENAME_BASE;",
+    ],
+  },
+}
