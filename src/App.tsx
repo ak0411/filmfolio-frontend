@@ -5,16 +5,11 @@ import Taskbar from './components/Taskbar';
 import Application from './components/Application';
 import FilmFolio from './components/FilmFolio';
 
-const DesktopWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  background-color: black;
-  height: 100vh;
-`;
-
 const Desktop = styled.div`
+  height: 100vh;
   width: calc(100vh * 4 / 3);
   background: ${({ theme }) => theme.desktopBackground};
+  margin: 0 auto;
 `;
 
 const App = () => {
@@ -22,14 +17,12 @@ const App = () => {
     <div>
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <DesktopWrapper>
-          <Desktop className='f fc'>
-            <Application name='filmfolio.exe'>
-              <FilmFolio />
-            </Application>
-            <Taskbar />
-          </Desktop>
-        </DesktopWrapper>
+        <Desktop className='f fc'>
+          <Application name='filmfolio.exe'>
+            <FilmFolio />
+          </Application>
+          <Taskbar />
+        </Desktop>
       </ThemeProvider>
     </div>
   );

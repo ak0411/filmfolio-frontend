@@ -1,61 +1,82 @@
-import { CSSProperties, FC, useState } from 'react';
-import { Button, Tab, TabBody, Tabs } from 'react95';
+import { FC } from 'react';
+import { Button, Frame, TextInput } from 'react95';
 import styled from 'styled-components';
-import Films from './Films';
+import { filmData } from '../../global/testData';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 0.5em;
+  padding: 1em;
   gap: 1em;
 `;
 
-const Header = styled.h1`
-  font-size: 2em;
+const FilmsContainer = styled.div`
+  overflow-y: auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 `;
 
-const styleTab: CSSProperties = {
-  fontSize: '1.5em',
-  padding: '0 2em',
+const FilmsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  grid-row-gap: 1em;
+`;
+
+const styleFilmCard: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '200px',
+  height: 'auto',
+};
+
+const styleGenreWrapper: React.CSSProperties = {
+  display: 'flex',
+  gap: '0.5em',
+  overflowX: 'auto',
+};
+
+const stylePoster: React.CSSProperties = {
+  imageRendering: 'pixelated',
+};
+
+const styleSearchBar: React.CSSProperties = {
+  width: '25em',
+  margin: '0 auto',
 };
 
 const FilmFolio: FC = () => {
-  const [activeTab, setActiveTab] = useState(0);
-
-  const handleChange = (
-    value: number,
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-    setActiveTab(value);
-  };
   return (
     <Wrapper>
-      <Header>
-        <span>Welcome to FilmFolio!</span>
-        <div style={{ display: 'flex', gap: '5px' }}>
-          <Button>Login</Button>
-          <Button>Sign up</Button>
-        </div>
-      </Header>
-      <div className='f fc fg'>
-        <Tabs value={activeTab} onChange={handleChange}>
-          <Tab style={styleTab} value={0}>
-            Films
-          </Tab>
-          <Tab style={styleTab} value={1}>
-            Users
-          </Tab>
-        </Tabs>
-        <TabBody className='f fc fg'>
-          {activeTab === 0 && <Films />}
-          {activeTab === 1 && <h1>Here show users</h1>}
-        </TabBody>
+      <div className='f'>
+        <Button className='fg'>Films</Button>
+        <Button className='fg'>Users</Button>
+        <Button className='fg'>Login</Button>
+        <Button className='fg'>Sign up</Button>
       </div>
+      <FilmsContainer>
+        <TextInput style={styleSearchBar} placeholder='Search' />
+        <FilmsGrid>
+          {filmData.map((film) => (
+            <Frame style={styleFilmCard} key={film.imdb} variant='well'>
+              <img style={stylePoster} src={film.poster} />
+              <div className='f fc fac'>
+                <h1 className='bold'>{film.title}</h1>
+                <span>{film.year}</span>
+              </div>
+              <div style={styleGenreWrapper}>
+                {film.genre.map((genre, index) => (
+                  <Frame key={index} variant='well'>
+                    {genre}
+                  </Frame>
+                ))}
+              </div>
+            </Frame>
+          ))}
+        </FilmsGrid>
+      </FilmsContainer>
     </Wrapper>
   );
 };

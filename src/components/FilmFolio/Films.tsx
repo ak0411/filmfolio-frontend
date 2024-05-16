@@ -1,64 +1,68 @@
-import { CSSProperties, FC } from 'react';
-import { Frame, ScrollView, TextInput } from 'react95';
+import { FC } from 'react';
+import { Frame, TextInput } from 'react95';
 import { filmData } from '../../global/testData';
 import styled from 'styled-components';
 
-const FilmsGrid = styled.div`
-  display: grid;
-  grid-template-columns: auto auto auto;
+const FilmsContainer = styled.div`
   overflow-y: auto;
-  height: 60vh;
-  justify-items: center;
-  grid-row-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: red;
 `;
 
-const styleFilmCard: CSSProperties = {
+const FilmsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  grid-row-gap: 1em;
+`;
+
+const styleFilmCard: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
-  width: '350px',
+  width: '200px',
   height: 'auto',
 };
 
-const styleGenreWrapper: CSSProperties = {
+const styleGenreWrapper: React.CSSProperties = {
   display: 'flex',
-  gap: '5px',
+  gap: '0.5em',
   overflowX: 'auto',
 };
 
-const stylePoster: CSSProperties = {
+const stylePoster: React.CSSProperties = {
   imageRendering: 'pixelated',
 };
 
-const styleSearchBar: CSSProperties = {
+const styleSearchBar: React.CSSProperties = {
   width: '25em',
   margin: '0 auto',
 };
 
 const Films: FC = () => {
   return (
-    <div className='f fc' style={{ gap: 20 }}>
+    <FilmsContainer>
       <TextInput style={styleSearchBar} placeholder='Search' />
-      <ScrollView>
-        <FilmsGrid>
-          {filmData.map((film) => (
-            <Frame style={styleFilmCard} key={film.imdb} variant='well'>
-              <img style={stylePoster} src={film.poster} />
-              <div className='f fc fac'>
-                <h1 className='bold'>{film.title}</h1>
-                <span>{film.year}</span>
-              </div>
-              <div style={styleGenreWrapper}>
-                {film.genre.map((genre, index) => (
-                  <Frame key={index} variant='well'>
-                    {genre}
-                  </Frame>
-                ))}
-              </div>
-            </Frame>
-          ))}
-        </FilmsGrid>
-      </ScrollView>
-    </div>
+      <FilmsGrid>
+        {filmData.map((film) => (
+          <Frame style={styleFilmCard} key={film.imdb} variant='well'>
+            <img style={stylePoster} src={film.poster} />
+            <div className='f fc fac'>
+              <h1 className='bold'>{film.title}</h1>
+              <span>{film.year}</span>
+            </div>
+            <div style={styleGenreWrapper}>
+              {film.genre.map((genre, index) => (
+                <Frame key={index} variant='well'>
+                  {genre}
+                </Frame>
+              ))}
+            </div>
+          </Frame>
+        ))}
+      </FilmsGrid>
+    </FilmsContainer>
   );
 };
 

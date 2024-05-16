@@ -1,5 +1,12 @@
 import { CSSProperties, FC, ReactNode } from 'react';
-import { Button, Window, WindowContent, WindowHeader } from 'react95';
+import {
+  Button,
+  ScrollView,
+  Window,
+  WindowContent,
+  WindowHeader,
+} from 'react95';
+import styled from 'styled-components';
 
 const minimizeIconPath = `M464 352H48c-26.5 0-48 21.5-48 48v32c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-32c0-26.5-21.5-48-48-48z`;
 const maximizeIconPath = `M170.666667 170.666667 853.333333 170.666667 853.333333 853.333333 170.666667 853.333333 170.666667 170.666667M256 341.333333 256 768 768 768 768 341.333333 256 341.333333Z`;
@@ -24,7 +31,7 @@ interface Props {
 
 const Application: FC<Props> = ({ name, children }) => {
   return (
-    <Window className='f fc fg'>
+    <Window className='f fc fg' style={{ minHeight: 0 }}>
       <WindowHeader className='f fjb'>
         <span>{name}</span>
         <div className='f fac'>
@@ -45,7 +52,9 @@ const Application: FC<Props> = ({ name, children }) => {
           </Button>
         </div>
       </WindowHeader>
-      <WindowContent className='fg'>{children}</WindowContent>
+      <WindowContent style={{ overflow: 'auto' }}>
+        <ScrollView className='fullh'>{children}</ScrollView>
+      </WindowContent>
     </Window>
   );
 };
