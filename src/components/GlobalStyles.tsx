@@ -28,9 +28,6 @@ const GlobalStyles = createGlobalStyle`
   body, input, select, textarea {
     font-family: 'ms_sans_serif';
   }
-  body {
-    background-color: black
-  }
   .f {
     display: flex;
   }
@@ -73,6 +70,11 @@ const GlobalStyles = createGlobalStyle`
   .bold {
     font-weight: bold;
   }
+  img, picture {
+    max-width: 100%;
+    display: block;
+  }
+
 `;
 
 export default GlobalStyles;

@@ -6,7 +6,6 @@ import {
   WindowContent,
   WindowHeader,
 } from 'react95';
-import styled from 'styled-components';
 
 const minimizeIconPath = `M464 352H48c-26.5 0-48 21.5-48 48v32c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-32c0-26.5-21.5-48-48-48z`;
 const maximizeIconPath = `M170.666667 170.666667 853.333333 170.666667 853.333333 853.333333 170.666667 853.333333 170.666667 170.666667M256 341.333333 256 768 768 768 768 341.333333 256 341.333333Z`;
@@ -52,7 +51,7 @@ const Application: FC<Props> = ({ name, children }) => {
           </Button>
         </div>
       </WindowHeader>
-      <WindowContent style={{ overflow: 'auto' }}>
+      <WindowContent style={{ overflow: 'auto' }} className='fullh'>
         <ScrollView className='fullh'>{children}</ScrollView>
       </WindowContent>
     </Window>

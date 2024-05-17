@@ -6,25 +6,26 @@ import Application from './components/Application';
 import FilmFolio from './components/FilmFolio';
 
 const Desktop = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 100vh;
-  width: calc(100vh * 4 / 3);
   background: ${({ theme }) => theme.desktopBackground};
   margin: 0 auto;
 `;
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <div>
+    <>
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <Desktop className='f fc'>
+        <Desktop>
           <Application name='filmfolio.exe'>
             <FilmFolio />
           </Application>
           <Taskbar />
         </Desktop>
       </ThemeProvider>
-    </div>
+    </>
   );
 };
 
