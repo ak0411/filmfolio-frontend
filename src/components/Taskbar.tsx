@@ -12,6 +12,7 @@ import {
 import { useDate } from '../hooks/useDate';
 import winLogo from '../assets/win-logo.png';
 import octoCat from '../assets/octocat-icon.png';
+import filmfolioLogo from '../assets/filmfolio-logo.png';
 
 const Taskbar: FC = () => {
   const [open, setOpen] = useState(false);
@@ -20,7 +21,7 @@ const Taskbar: FC = () => {
   return (
     <AppBar className='rel'>
       <Toolbar className='f fjb'>
-        <div style={{ display: 'flex', gap: '5px' }}>
+        <div style={{ display: 'flex', gap: '0.25em' }}>
           <Button
             onClick={() => setOpen(!open)}
             active={open}
@@ -34,6 +35,14 @@ const Taskbar: FC = () => {
             Start
           </Button>
           <Handle size={35} />
+          <Button className='bold'>
+            <img
+              src={filmfolioLogo}
+              alt='filmfolio logo'
+              style={{ height: '16px', marginRight: 4 }}
+            />
+            FilmFolio
+          </Button>
           {open && (
             <MenuList
               style={{
@@ -63,9 +72,9 @@ const Taskbar: FC = () => {
           <div
             style={{
               display: 'flex',
-              gap: '10px',
+              gap: '1em',
               alignContent: 'center',
-              padding: '0 5px 0 5px',
+              padding: '0 0.5em',
             }}
           >
             <div>{date}</div>

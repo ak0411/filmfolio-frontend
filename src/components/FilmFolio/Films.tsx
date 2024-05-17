@@ -11,25 +11,24 @@ const FilmsContainer = styled.div`
   flex-direction: column;
   height: 100%;
   gap: 1em;
-  padding: 1em;
 `;
 
 const FilmsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
   gap: 1em;
 `;
 
-const styleFilmCard: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-};
+const FilmCard = styled(Frame)`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s;
 
-const styleGenreWrapper: React.CSSProperties = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '0.5em',
-};
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
 
 const stylePoster: React.CSSProperties = {
   width: '100%',
@@ -38,9 +37,7 @@ const stylePoster: React.CSSProperties = {
   imageRendering: 'pixelated',
 };
 
-const styleSearchBar: React.CSSProperties = {
-  margin: '0 25em',
-};
+const styleSearchBar: React.CSSProperties = {};
 
 const Films: React.FC = () => {
   const { isPending, isError, data, error } = useQuery({
@@ -58,32 +55,24 @@ const Films: React.FC = () => {
           <Hourglass size={128} />
         </div>
       ) : isError ? (
-        <span className='f fg fjc fac'>{error.message}</span>
+        <div className='f fg fjc fac'>
+          Could not fetch films: {error.message}
+        </div>
       ) : (
         <FilmsGrid>
           {films.map((film) => (
-            <Frame style={styleFilmCard} key={film.imdb_id} variant='well'>
+            <FilmCard key={film.imdb_id} variant='well'>
               <img style={stylePoster} src={baseImgPath + film.poster_path} />
-              <div style={{ margin: '0 0.5em 1em 0.5em' }}>
-                <h1
-                  className='bold'
-                  style={{ textAlign: 'center', fontSize: '1.5em' }}
-                >
-                  {film.title}
-                </h1>
-                <div style={styleGenreWrapper}>
-                  {film.genres.map((genre, index) => (
-                    <Frame
-                      key={index}
-                      variant='well'
-                      style={{ fontSize: '1.5em', padding: '0.25em' }}
-                    >
-                      {genre}
-                    </Frame>
-                  ))}
-                </div>
-              </div>
-            </Frame>
+              <h1
+                className='f fac fjc bold'
+                style={{
+                  fontSize: '1.25em',
+                  padding: '1em',
+                }}
+              >
+                {film.title}
+              </h1>
+            </FilmCard>
           ))}
         </FilmsGrid>
       )}
