@@ -1,4 +1,4 @@
-import { CSSProperties, FC, ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import {
   Button,
   ScrollView,
@@ -28,7 +28,7 @@ interface Props {
   children: ReactNode;
 }
 
-const Application: FC<Props> = ({ name, children }) => {
+const Application = ({ name, children }: Props) => {
   return (
     <Window className='f fc fg' style={{ minHeight: 0 }}>
       <WindowHeader className='f fjb'>

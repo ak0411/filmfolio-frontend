@@ -1,7 +1,9 @@
-import { FC } from 'react';
+import { useState } from 'react';
 import { Button } from 'react95';
 import styled from 'styled-components';
 import Films from './Films';
+import Login from './Login';
+import Signup from './Signup';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,16 +18,31 @@ const styleButton: React.CSSProperties = {
   fontSize: '1.5em',
 };
 
-const FilmFolio: FC = () => {
+enum Tab {
+  Films,
+  Login,
+  Signup,
+}
+
+const FilmFolio = () => {
+  const [tab, setTab] = useState<Tab>(Tab.Films);
+
   return (
     <Wrapper>
       <div className='f' style={{ gap: '1em' }}>
-        <Button style={styleButton}>Films</Button>
-        <Button style={styleButton}>Users</Button>
-        <Button style={styleButton}>Login</Button>
-        <Button style={styleButton}>Sign up</Button>
+        <Button style={styleButton} onClick={() => setTab(Tab.Films)}>
+          Films
+        </Button>
+        <Button style={styleButton} onClick={() => setTab(Tab.Login)}>
+          Login
+        </Button>
+        <Button style={styleButton} onClick={() => setTab(Tab.Signup)}>
+          Sign up
+        </Button>
       </div>
-      <Films />
+      {tab === Tab.Films && <Films />}
+      {tab === Tab.Login && <Login />}
+      {tab === Tab.Signup && <Signup />}
     </Wrapper>
   );
 };

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import {
   AppBar,
   Button,
@@ -14,7 +14,7 @@ import winLogo from '../assets/win-logo.png';
 import octoCat from '../assets/octocat-icon.png';
 import filmfolioLogo from '../assets/filmfolio-logo.png';
 
-const Taskbar: FC = () => {
+const Taskbar = () => {
   const [open, setOpen] = useState(false);
   const { date, time } = useDate();
 

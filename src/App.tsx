@@ -4,7 +4,6 @@ import GlobalStyles from './components/GlobalStyles';
 import Taskbar from './components/Taskbar';
 import Application from './components/Application';
 import FilmFolio from './components/FilmFolio';
-import filmfolioLogo from './assets/filmfolio-logo.png';
 
 const Desktop = styled.div`
   display: flex;
@@ -21,7 +20,7 @@ const App: React.FC = () => {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Desktop>
-          <Application name='filmfolio.exe' logo={filmfolioLogo}>
+          <Application name='filmfolio.exe'>
             <FilmFolio />
           </Application>
           <Taskbar />
