@@ -1,39 +1,11 @@
-import { ErrorMessage, Field, Form, Formik, FormikErrors } from 'formik';
-import { Button } from 'react95';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  gap: 1em;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StyledForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  width: 100%;
-  max-width: 600px;
-`;
-
-const StyledField = styled(Field)`
-  height: 2.5em;
-  font-size: 1.75em;
-  text-align: center;
-`;
-
-const StyledButton = styled(Button)`
-  font-size: 1.75em;
-  height: 2.5em;
-`;
-
-const ErrorText = styled.div`
-  color: red;
-`;
+import { ErrorMessage, Formik, FormikErrors } from 'formik';
+import {
+  Container,
+  ErrorText,
+  StyledButton,
+  StyledField,
+  StyledForm,
+} from './Login';
 
 interface signupValues {
   name?: string;

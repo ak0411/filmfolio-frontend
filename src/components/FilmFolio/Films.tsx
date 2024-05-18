@@ -1,4 +1,4 @@
-import { Frame, Hourglass, TextInput } from 'react95';
+import { Frame, Hourglass } from 'react95';
 import styled from 'styled-components';
 import { useQuery } from '@tanstack/react-query';
 import { getFilms } from '../../services/films';
@@ -37,9 +37,19 @@ const stylePoster: React.CSSProperties = {
   imageRendering: 'pixelated',
 };
 
-const styleSearchBar: React.CSSProperties = {};
+const StyledInput = styled.input`
+  width: 100%;
+  max-width: 25em;
+  font-size: 1.25em;
+  padding: 0.25em;
+  margin: 0 auto;
+`;
 
-const Films: React.FC = () => {
+const Searchbar = styled.div`
+  display: flex;
+`;
+
+const Films = () => {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ['films'],
     queryFn: getFilms,
@@ -49,7 +59,9 @@ const Films: React.FC = () => {
 
   return (
     <FilmsContainer>
-      <TextInput variant='flat' placeholder='Search' style={styleSearchBar} />
+      <Searchbar>
+        <StyledInput placeholder='Search...' />
+      </Searchbar>
       {isPending ? (
         <div className='f fg fjc fac'>
           <Hourglass size={128} />

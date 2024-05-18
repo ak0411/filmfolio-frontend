@@ -2,7 +2,7 @@ import { Field, Form, Formik, FormikErrors, ErrorMessage } from 'formik';
 import { Button } from 'react95';
 import styled from 'styled-components';
 
-const Container = styled.div`
+export const Container = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const StyledForm = styled(Form)`
+export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -20,19 +20,20 @@ const StyledForm = styled(Form)`
   max-width: 600px;
 `;
 
-const StyledField = styled(Field)`
+export const StyledField = styled(Field)`
   height: 2.5em;
   font-size: 1.75em;
   text-align: center;
 `;
 
-const StyledButton = styled(Button)`
+export const StyledButton = styled(Button)`
   font-size: 1.75em;
   height: 2.5em;
 `;
 
-const ErrorText = styled.div`
+export const ErrorText = styled.div`
   color: red;
+  text-align: center;
 `;
 
 interface loginValues {
@@ -76,12 +77,7 @@ const Login = () => {
         <StyledForm>
           <StyledField id='username' name='username' placeholder='Username' />
           <ErrorMessage name='username' component={ErrorText} />
-          <StyledField
-            id='password'
-            name='password'
-            placeholder='Password'
-            type='password'
-          />
+          <StyledField id='password' name='password' placeholder='Password' />
           <ErrorMessage name='password' component={ErrorText} />
           <StyledButton type='submit'>Enter</StyledButton>
         </StyledForm>

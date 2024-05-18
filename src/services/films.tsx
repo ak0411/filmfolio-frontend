@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FilmResponse } from '../global/types';
+import { FilmResponse } from '../utils/types';
 
 const baseUrl = 'http://localhost:8080/api/v1/films';
 
