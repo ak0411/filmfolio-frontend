@@ -1,6 +1,7 @@
 import { Field, Form, Formik, FormikErrors, ErrorMessage } from 'formik';
 import { Button } from 'react95';
 import styled from 'styled-components';
+import { useAuth } from '../../hooks/useAuth';
 
 export const Container = styled.div`
   overflow-y: auto;
@@ -43,6 +44,7 @@ interface loginValues {
 
 const Login = () => {
   const initialValues: loginValues = { username: '', password: '' };
+  const { login } = useAuth();
 
   return (
     <Container>
@@ -69,15 +71,19 @@ const Login = () => {
           }
           return errors;
         }}
-        onSubmit={(values: loginValues, actions) => {
-          console.log({ values, actions });
-          actions.setSubmitting(false);
+        onSubmit={(values: loginValues) => {
+          login(values.username, values.password);
         }}
       >
         <StyledForm>
           <StyledField id='username' name='username' placeholder='Username' />
           <ErrorMessage name='username' component={ErrorText} />
-          <StyledField id='password' name='password' placeholder='Password' />
+          <StyledField
+            id='password'
+            name='password'
+            type='password'
+            placeholder='Password'
+          />
           <ErrorMessage name='password' component={ErrorText} />
           <StyledButton type='submit'>Enter</StyledButton>
         </StyledForm>

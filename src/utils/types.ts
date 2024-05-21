@@ -1,4 +1,11 @@
+export type UserProfile = {
+  name: string | null;
+  username: string;
+};
+
 export type UserToken = {
+  name: string | null;
+  username: string;
   token: string;
 };
 
