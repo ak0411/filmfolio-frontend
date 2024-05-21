@@ -1,4 +1,8 @@
-export interface Film {
+export type UserToken = {
+  token: string;
+};
+
+export type Film = {
   title: string;
   genres: string[];
   overview: string;
@@ -10,9 +14,9 @@ export interface Film {
   release_date: string;
   poster_path: string;
   favorites: number;
-}
+};
 
-export interface FilmResponse {
+export type FilmResponse = {
   content: Film[];
   pageable: {
     pageNumber: number;
@@ -39,7 +43,7 @@ export interface FilmResponse {
   };
   numberOfElements: number;
   empty: boolean;
-}
+};
 
 export const genres = [
   'Action',

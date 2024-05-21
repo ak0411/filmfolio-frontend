@@ -1,7 +1,7 @@
 import { Frame, Hourglass } from 'react95';
 import styled from 'styled-components';
 import { useQuery } from '@tanstack/react-query';
-import { getFilms } from '../../services/films';
+import { getFilms } from '../../services/FilmService';
 
 const baseImgPath = 'https://image.tmdb.org/t/p/w200';
 

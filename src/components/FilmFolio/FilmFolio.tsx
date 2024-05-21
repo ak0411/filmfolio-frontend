@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { Button } from 'react95';
 import styled from 'styled-components';
 import Films from './Films';
 import Login from './Login';
-import Signup from './Signup';
+import Register from './Register';
+import { Route, Routes } from 'react-router-dom';
+import Loading from '../Loading';
+import Menu from '../Menu';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,36 +14,16 @@ const Wrapper = styled.div`
   gap: 1em;
 `;
 
-const styleButton: React.CSSProperties = {
-  flexGrow: 1,
-  fontSize: '1.5em',
-};
-
-enum Tab {
-  Films,
-  Login,
-  Signup,
-}
-
 const FilmFolio = () => {
-  const [tab, setTab] = useState<Tab>(Tab.Films);
-
   return (
     <Wrapper>
-      <div className='f' style={{ gap: '1em' }}>
-        <Button style={styleButton} onClick={() => setTab(Tab.Films)}>
-          Films
-        </Button>
-        <Button style={styleButton} onClick={() => setTab(Tab.Login)}>
-          Login
-        </Button>
-        <Button style={styleButton} onClick={() => setTab(Tab.Signup)}>
-          Sign up
-        </Button>
-      </div>
-      {tab === Tab.Films && <Films />}
-      {tab === Tab.Login && <Login />}
-      {tab === Tab.Signup && <Signup />}
+      <Menu />
+      <Routes>
+        <Route path='/' element={<Loading />} />
+        <Route path='/films' element={<Films />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
     </Wrapper>
   );
 };

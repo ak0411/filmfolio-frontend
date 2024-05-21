@@ -7,15 +7,15 @@ import {
   StyledForm,
 } from './Login';
 
-interface signupValues {
+interface registerValues {
   name?: string;
   username: string;
   password: string;
   passwordConfirm: string;
 }
 
-const Signup = () => {
-  const initialValues: signupValues = {
+const Register = () => {
+  const initialValues: registerValues = {
     username: '',
     password: '',
     passwordConfirm: '',
@@ -35,8 +35,8 @@ const Signup = () => {
       </h1>
       <Formik
         initialValues={initialValues}
-        validate={(values: signupValues) => {
-          const errors: FormikErrors<signupValues> = {};
+        validate={(values: registerValues) => {
+          const errors: FormikErrors<registerValues> = {};
           if (!values.username) {
             errors.username = 'Username required';
           }
@@ -55,7 +55,7 @@ const Signup = () => {
 
           return errors;
         }}
-        onSubmit={(values: signupValues, actions) => {
+        onSubmit={(values: registerValues, actions) => {
           console.log({ values, actions });
           actions.setSubmitting(false);
         }}
@@ -85,4 +85,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;
