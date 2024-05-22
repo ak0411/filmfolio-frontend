@@ -21,7 +21,7 @@ export const registerAPI = async (
   password: string
 ) => {
   try {
-    const data = await axios.post<UserToken>(baseUrl + '/sigup', {
+    const data = await axios.post<UserToken>(baseUrl + '/signup', {
       name: name,
       username: username,
       password: password,

@@ -6,9 +6,10 @@ import {
   StyledField,
   StyledForm,
 } from './Login';
+import { useAuth } from '../../hooks/useAuth';
 
 interface registerValues {
-  name?: string;
+  name: string | null;
   username: string;
   password: string;
   passwordConfirm: string;
@@ -16,10 +17,12 @@ interface registerValues {
 
 const Register = () => {
   const initialValues: registerValues = {
+    name: null,
     username: '',
     password: '',
     passwordConfirm: '',
   };
+  const { register } = useAuth();
 
   return (
     <Container>
@@ -55,9 +58,8 @@ const Register = () => {
 
           return errors;
         }}
-        onSubmit={(values: registerValues, actions) => {
-          console.log({ values, actions });
-          actions.setSubmitting(false);
+        onSubmit={(values: registerValues) => {
+          register(values.name, values.username, values.password);
         }}
       >
         <StyledForm>

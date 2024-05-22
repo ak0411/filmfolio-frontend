@@ -8,7 +8,7 @@ import { UserProfile } from '../utils/types';
 type UserContextType = {
   user: UserProfile | null;
   token: string | null;
-  register: (name: string, username: string, password: string) => void;
+  register: (name: string | null, username: string, password: string) => void;
   login: (username: string, password: string) => void;
   logout: () => void;
   isLoggedIn: () => boolean;
