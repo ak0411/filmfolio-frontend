@@ -23,7 +23,7 @@ export type Film = {
   favorites: number;
 };
 
-export type FilmResponse = {
+export type FilmsPage = {
   content: Film[];
   pageable: {
     pageNumber: number;

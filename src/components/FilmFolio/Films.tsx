@@ -2,6 +2,7 @@ import { Frame, Hourglass } from 'react95';
 import styled from 'styled-components';
 import { useQuery } from '@tanstack/react-query';
 import { getFilms } from '../../services/FilmService';
+import { useNavigate } from 'react-router-dom';
 
 const baseImgPath = 'https://image.tmdb.org/t/p/w200';
 
@@ -50,6 +51,7 @@ const Searchbar = styled.div`
 `;
 
 const Films = () => {
+  const navigate = useNavigate();
   const { isPending, isError, data, error } = useQuery({
     queryKey: ['films'],
     queryFn: getFilms,
@@ -73,7 +75,11 @@ const Films = () => {
       ) : (
         <FilmsGrid>
           {films.map((film) => (
-            <FilmCard key={film.imdb_id} variant='well'>
+            <FilmCard
+              key={film.imdb_id}
+              variant='well'
+              onClick={() => navigate(`${film.imdb_id}`)}
+            >
               <img style={stylePoster} src={baseImgPath + film.poster_path} />
               <h1
                 className='f fac fjc bold'

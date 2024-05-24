@@ -5,6 +5,7 @@ import Register from './Register';
 import { Route, Routes } from 'react-router-dom';
 import Loading from '../Loading';
 import Menu from '../Menu';
+import FilmDetail from './FilmDetail';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,7 +21,8 @@ const FilmFolio = () => {
       <Menu />
       <Routes>
         <Route path='/' element={<Loading />} />
-        <Route path='/films' element={<Films />} />
+        <Route path='/films/' element={<Films />} />
+        <Route path='/films/:id' element={<FilmDetail />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>
