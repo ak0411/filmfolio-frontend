@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const baseImgPath = 'https://image.tmdb.org/t/p/w200';
 
-const FilmsContainer = styled.div`
+export const FilmsContainer = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
